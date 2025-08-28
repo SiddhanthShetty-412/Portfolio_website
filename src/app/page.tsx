@@ -7,7 +7,7 @@ import ContactForm from "@/components/ContactForm";
 export default function Home() {
   return (
     <>
-      <Hero name="Your Name" tagline="Short tagline from your resume." />
+      <Hero name="Siddhanth Shetty" tagline="Enthusiastic Computer Science Engineering student specializing in Data Science with hands-on experience in Flutter, Python." />
       <Section id="about" title="About Me">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[160px_1fr]">
           <div className="mx-auto md:mx-0">
