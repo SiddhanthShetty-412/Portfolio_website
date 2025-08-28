@@ -1,16 +1,10 @@
 {
-	"version": 2,
-	"buildCommand": "npm run build",
-	"installCommand": "npm ci",
-	"outputDirectory": ".next",
-	"framework": "nextjs",
-	"functions": {
-		"api/**": {
-			"runtime": "nodejs18.x"
-		}
-	},
-	"env": {
-		"NEXT_TELEMETRY_DISABLED": "1"
-	}
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  }
 }
-

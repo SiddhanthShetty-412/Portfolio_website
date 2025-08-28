@@ -5,7 +5,7 @@ type HeroProps = {
 	tagline?: string;
 };
 
-export default function Hero({ name = "Your Name", tagline = "Short tagline from your resume." }: HeroProps) {
+export default function Hero({ name = "Siddhanth Shetty", tagline = " Enthusiastic Computer Science Engineering student specializing in Data Science with hands-on experience in Flutter, Python." }: HeroProps) {
 	return (
 		<section className="flex min-h-[70vh] items-center justify-center text-center">
 			<div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -28,5 +28,6 @@ export default function Hero({ name = "Your Name", tagline = "Short tagline from
 		</section>
 	);
 }
+
 
 
