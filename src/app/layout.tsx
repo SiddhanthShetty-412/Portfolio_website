@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Your Name",
-  description: "Personal portfolio website",
+  title: "Portfolio | Siddhanth Shetty",
+  description: "Personal portfolio website of Siddhanth Shetty",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="fixed inset-0 bg-black/40 pointer-events-none" />
+        <div className="radial-gradient-bg" />
         <Navbar />
         <main>{children}</main>
         <Footer />

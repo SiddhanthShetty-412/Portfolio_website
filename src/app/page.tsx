@@ -2,7 +2,9 @@ import Image from "next/image";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
+import CertificationCard from "@/components/CertificationCard";
 import ContactForm from "@/components/ContactForm";
+import { certifications } from "@/data/certifications";
 
 export default function Home() {
   return (
@@ -12,8 +14,8 @@ export default function Home() {
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[160px_1fr]">
           <div className="mx-auto md:mx-0">
             <Image
-              src="/profile-placeholder.svg"
-              alt="Profile photo"
+              src="/me.jpeg"
+              alt="Siddhanth Shetty"
               width={160}
               height={160}
               className="h-40 w-40 rounded-full object-cover ring-1 ring-gray-200"
@@ -80,6 +82,19 @@ export default function Home() {
             tech={["Next.js", "TypeScript", "Tailwind CSS"]}
             demo="/"
           />
+        </div>
+      </Section>
+      <Section id="certifications" title="Certifications">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {certifications.map((c) => (
+            <CertificationCard
+              key={`${c.title}-${c.date}`}
+              title={c.title}
+              issuer={c.issuer}
+              date={c.date}
+              url={c.link}
+            />
+          ))}
         </div>
       </Section>
       <Section id="contact" title="Contact">

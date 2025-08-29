@@ -8,18 +8,41 @@ export default function ContactForm() {
 	const [message, setMessage] = useState("");
 	const [sending, setSending] = useState(false);
 	const [sent, setSent] = useState(false);
+	const [error, setError] = useState(false);
 
 	async function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		setSending(true);
-		console.log({ name, email, message });
-		await new Promise((r) => setTimeout(r, 400));
+		setError(false);
+		setSent(false);
+
+		const formData = new FormData();
+		formData.append("access_key", "3cea74ec-050a-4dbc-8016-e0dd99efd5c8");
+		formData.append("name", name);
+		formData.append("email", email);
+		formData.append("message", message);
+
+		const response = await fetch("https://api.web3forms.com/submit", {
+			method: "POST",
+			body: formData,
+		});
+
+		const result = await response.json();
+
 		setSending(false);
-		setSent(true);
+		if (result.success) {
+			setSent(true);
+			setName("");
+			setEmail("");
+			setMessage("");
+		} else {
+			setError(true);
+		}
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className="mx-auto w-full max-w-xl space-y-4">
+		<>
+			<form onSubmit={handleSubmit} className="mx-auto w-full max-w-xl space-y-4">
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<div>
 					<label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700">
@@ -69,9 +92,19 @@ export default function ContactForm() {
 				>
 					{sending ? "Sending..." : "Send Message"}
 				</button>
-				{sent ? <span className="text-sm text-green-600">Sent! Check console.</span> : null}
 			</div>
-		</form>
+			</form>
+			{sent && (
+				<div className="mx-auto mt-4 w-full max-w-xl rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+					Your message has been sent successfully 🎉
+				</div>
+			)}
+			{error && (
+				<div className="mx-auto mt-4 w-full max-w-xl rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+					Something went wrong. Please try again.
+				</div>
+			)}
+		</>
 	);
 }
 
